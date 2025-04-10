@@ -22,7 +22,7 @@ import androidx.compose.ui.unit.sp
 
 
 @Composable
-internal fun InfoRow(label: String, value: String, icon: ImageVector, onClick: () -> Unit) {
+internal fun InfoRow(label: String, value: String, icon: ImageVector, onClick: (() -> Unit)? = null) {
     Row(
         verticalAlignment = Alignment.CenterVertically,
         modifier = Modifier.fillMaxWidth()
@@ -47,8 +47,11 @@ internal fun InfoRow(label: String, value: String, icon: ImageVector, onClick: (
                 color = MaterialTheme.colorScheme.onSurfaceVariant
             )
         }
-        IconButton(onClick = onClick) {
-            Icon(Icons.Rounded.Edit, contentDescription = "Editar")
+        if(onClick != null){
+            IconButton(onClick = onClick) {
+                Icon(Icons.Rounded.Edit, contentDescription = "Editar")
+            }
         }
+
     }
 }

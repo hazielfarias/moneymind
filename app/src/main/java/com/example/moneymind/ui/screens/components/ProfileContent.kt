@@ -7,6 +7,7 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.rounded.ArrowBack
 import androidx.compose.material.icons.rounded.Edit
+import androidx.compose.material.icons.rounded.Info
 import androidx.compose.material.icons.rounded.Notifications
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
@@ -97,8 +98,7 @@ fun ProfileContent(
                 InfoRow(
                     label = "Email",
                     value = user?.email ?: "Não disponível",
-                    icon = Icons.Rounded.Edit,
-                    onClick = {}
+                    icon = Icons.Rounded.Info
                 )
             }
 
@@ -137,6 +137,7 @@ fun ProfileContent(
                         icon = Icons.Rounded.Edit,
                         onClick = { showDatePicker = true }
                     )
+
                 }
             }
 

@@ -120,7 +120,7 @@ fun HomeScreen(
                             Spacer(modifier = Modifier.height(8.dp))
 
                             Text(
-                                text = "Gerencie suas finanças e investimentos de forma inteligente",
+                                text = "Gerencie suas despesas de forma inteligente",
                                 style = MaterialTheme.typography.bodyMedium.copy(
                                     textAlign = TextAlign.Center
                                 )
