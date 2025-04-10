@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "673714689775",
+    "project_id": "mindmoney-261fc",
+    "storage_bucket": "mindmoney-261fc.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:673714689775:android:bd6bc8a7b8296285e86d1a",
+        "android_client_info": {
+          "package_name": "com.example.moneymind"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "673714689775-mu9phkamdln24846hjhe3c6072kvdh6s.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyByyB0mVtNlJs5trW8u95EGOB4JHp7JcDk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "673714689775-mu9phkamdln24846hjhe3c6072kvdh6s.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
