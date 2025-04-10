@@ -239,7 +239,11 @@ fun HomeScreen(
                                                 name = transaction.title,
                                                 type = "Despesa: ${transaction.category}",
                                                 value = transaction.value,
-                                                isExpense = true
+                                                isExpense = true,
+                                                description = "Descrição: "+transaction.description,
+                                                onDelete = {
+                                                    financeViewModel.deleteExpense(transaction)
+                                                }
                                             )
                                         }
                                     }

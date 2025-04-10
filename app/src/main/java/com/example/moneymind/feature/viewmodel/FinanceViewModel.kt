@@ -84,6 +84,7 @@ class FinanceViewModel @Inject constructor(
             repository.deleteExpense(expense).fold(
                 onSuccess = {
                     _uiState.value = FinanceUiState.Success("Despesa removida com sucesso")
+                    _expenses.value = _expenses.value.filter { it.id != expense.id }
                 },
                 onFailure = { exception ->
                     _uiState.value = FinanceUiState.Error(exception.message ?: "Erro ao remover despesa")
