@@ -2,12 +2,11 @@ package com.example.moneymind.feature.di
 
 import android.content.Context
 import androidx.room.Room
-import com.example.moneymind.feature.local.AppDatabase
-import com.example.moneymind.feature.local.dao.FinanceDao
 import com.example.moneymind.feature.cases.expense.AddExpenseUseCase
 import com.example.moneymind.feature.cases.expense.DeleteExpenseUseCase
 import com.example.moneymind.feature.cases.expense.GetExpensesUseCase
-import com.example.moneymind.feature.cases.expense.UpdateExpenseUseCase
+import com.example.moneymind.feature.local.AppDatabase
+import com.example.moneymind.feature.local.dao.FinanceDao
 import com.example.moneymind.feature.repository.FinanceRepository
 import com.example.moneymind.feature.repository.FinanceRepositoryImpl
 import dagger.Module
@@ -58,11 +57,6 @@ object FinanceModule {
     @Provides
     fun provideAddExpenseUseCase(repository: FinanceRepository): AddExpenseUseCase {
         return AddExpenseUseCase(repository)
-    }
-
-    @Provides
-    fun provideUpdateExpenseUseCase(repository: FinanceRepository): UpdateExpenseUseCase {
-        return UpdateExpenseUseCase(repository)
     }
 
     @Provides

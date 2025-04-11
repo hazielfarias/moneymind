@@ -29,6 +29,7 @@ class ReminderWorker(
     companion object {
         fun scheduleMonthlyReminder(context: Context, dayOfMonth: Int) {
             val currentDate = Calendar.getInstance()
+            // notificar as 9 horas do dia escolhido
             val dueDate = Calendar.getInstance().apply {
                 set(Calendar.DAY_OF_MONTH, dayOfMonth)
                 set(Calendar.HOUR_OF_DAY, 9)
@@ -40,17 +41,14 @@ class ReminderWorker(
                 }
             }
 
-            // para testar mudar os 1==1
-            val initialDelay = if (1==1) {
-                15L // 15 sec pra notificar
-            } else {
-                dueDate.timeInMillis - currentDate.timeInMillis
-            }
+
+            val initialDelay =  dueDate.timeInMillis - currentDate.timeInMillis
+
 
             val workRequest = PeriodicWorkRequestBuilder<ReminderWorker>(
                 30, TimeUnit.DAYS
             )
-                .setInitialDelay(initialDelay, if (1==1) TimeUnit.SECONDS else TimeUnit.MILLISECONDS)
+                .setInitialDelay(initialDelay,TimeUnit.SECONDS)
                 .build()
 
             WorkManager.getInstance(context).enqueueUniquePeriodicWork(

@@ -63,21 +63,6 @@ class FinanceViewModel @Inject constructor(
         }
     }
 
-    fun updateExpense(expense: Expense) {
-        viewModelScope.launch {
-            _uiState.value = FinanceUiState.Loading
-            repository.updateExpense(expense).fold(
-                onSuccess = {
-                    loadExpenses(expense.userId)
-                    _uiState.value = FinanceUiState.Success("Despesa atualizada com sucesso")
-                },
-                onFailure = { exception ->
-                    _uiState.value = FinanceUiState.Error(exception.message ?: "Erro ao atualizar despesa")
-                }
-            )
-        }
-    }
-
     fun deleteExpense(expense: Expense) {
         viewModelScope.launch {
             _uiState.value = FinanceUiState.Loading
@@ -98,15 +83,6 @@ class FinanceViewModel @Inject constructor(
             repository.getExpenseCategories(userId).collect { categories ->
                 _expenseCategories.value = categories
             }
-        }
-    }
-
-    // dash consult
-    suspend fun loadTotalExpenses(userId: String, start: Date, end: Date) {
-        repository.getTotalExpenses(userId, start, end).onSuccess { total ->
-            _totalExpenses.value = total
-        }.onFailure {
-            _uiState.value = FinanceUiState.Error("Erro ao carregar totais de despesas")
         }
     }
 

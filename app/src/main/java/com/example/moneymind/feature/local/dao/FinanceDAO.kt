@@ -13,9 +13,6 @@ interface FinanceDao {
     @Insert
     suspend fun insertExpense(expense: Expense): Long
 
-    @Update
-    suspend fun updateExpense(expense: Expense)
-
     @Delete
     suspend fun deleteExpense(expense: Expense)
 

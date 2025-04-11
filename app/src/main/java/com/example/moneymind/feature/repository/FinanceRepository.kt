@@ -9,7 +9,6 @@ interface FinanceRepository {
     suspend fun addExpense(expense: Expense): Result<Long>
     fun getExpenses(userId: String): Flow<List<Expense>>
     suspend fun getExpense(id: Long, userId: String): Result<Expense>
-    suspend fun updateExpense(expense: Expense): Result<Unit>
     suspend fun deleteExpense(expense: Expense): Result<Unit>
     fun getExpenseCategories(userId: String): Flow<List<String>>
 

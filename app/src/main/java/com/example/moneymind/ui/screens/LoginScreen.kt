@@ -57,13 +57,6 @@ fun LoginScreen(
             verticalArrangement = Arrangement.Center
         ) {
 
-            Image(
-                painter = painterResource(id = R.drawable.ic_google_logo), //colocar logo do app
-                contentDescription = "App Logo",
-                modifier = Modifier.size(120.dp),
-                contentScale = ContentScale.Fit
-            )
-
             Spacer(modifier = Modifier.height(32.dp))
 
             Text(
@@ -219,41 +212,6 @@ fun LoginScreen(
                 )
             }
 
-            Spacer(modifier = Modifier.height(24.dp))
-
-            OutlinedButton(
-                onClick = {
-                    isLoading = true
-                    authViewModel.signInWithGoogle()
-                },
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .height(52.dp),
-                shape = RoundedCornerShape(12.dp),
-                colors = ButtonDefaults.outlinedButtonColors(
-                    contentColor = MaterialTheme.colorScheme.onSurface
-                ),
-                border = ButtonDefaults.outlinedButtonBorder.copy(
-                    width = 1.dp,
-                    brush = SolidColor(MaterialTheme.colorScheme.outline)
-                )
-            ) {
-                Row(
-                    verticalAlignment = Alignment.CenterVertically,
-                    horizontalArrangement = Arrangement.Center
-                ) {
-                    Image(
-                        painter = painterResource(id = R.drawable.ic_google_logo),
-                        contentDescription = "Google Logo",
-                        modifier = Modifier.size(24.dp)
-                    )
-                    Spacer(modifier = Modifier.width(8.dp))
-                    Text(
-                        text = "Entrar com Google",
-                        fontSize = 16.sp
-                    )
-                }
-            }
 
             Spacer(modifier = Modifier.height(24.dp))
 

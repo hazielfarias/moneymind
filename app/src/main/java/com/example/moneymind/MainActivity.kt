@@ -10,6 +10,7 @@ import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
 import androidx.activity.result.contract.ActivityResultContracts
+import androidx.annotation.RequiresApi
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.collectAsState
@@ -32,31 +33,30 @@ import dagger.hilt.android.AndroidEntryPoint
 @AndroidEntryPoint
 class MainActivity : ComponentActivity() {
 
+    @RequiresApi(Build.VERSION_CODES.UPSIDE_DOWN_CAKE)
     @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
     override fun onCreate(savedInstanceState: Bundle?) {
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
-            val notificationManager = getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
-            if (!notificationManager.areNotificationsEnabled()) {
-                val requestPermissionLauncher = registerForActivityResult(
-                    ActivityResultContracts.RequestPermission()
-                ) { isGranted ->
-                    if (!isGranted) {
-                        // usuario negou -> vai direcionar para as config
-                        val intent = Intent().apply {
-                            action = android.provider.Settings.ACTION_APP_NOTIFICATION_SETTINGS
-                            putExtra(android.provider.Settings.EXTRA_APP_PACKAGE, packageName)
-                        }
-                        startActivity(intent)
+        val notificationManager = getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
+        if (!notificationManager.areNotificationsEnabled()) {
+            val requestPermissionLauncher = registerForActivityResult(
+                ActivityResultContracts.RequestPermission()
+            ) { isGranted ->
+                if (!isGranted) {
+                    // usuario negou -> vai direcionar para as config
+                    val intent = Intent().apply {
+                        action = android.provider.Settings.ACTION_APP_NOTIFICATION_SETTINGS
+                        putExtra(android.provider.Settings.EXTRA_APP_PACKAGE, packageName)
                     }
+                    startActivity(intent)
                 }
-                requestPermissionLauncher.launch(android.Manifest.permission.POST_NOTIFICATIONS)
             }
+            requestPermissionLauncher.launch(android.Manifest.permission.POST_NOTIFICATIONS)
         }
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContent {
             MoneymindTheme {
-                val authViewModel: AuthViewModel = viewModel ()
+                val authViewModel: AuthViewModel = viewModel()
                 val currentUser by authViewModel.userState.collectAsState()
                 val navController = rememberNavController()
                 val financeViewModel: FinanceViewModel = viewModel()

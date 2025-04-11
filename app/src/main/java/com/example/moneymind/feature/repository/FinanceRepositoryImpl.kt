@@ -38,15 +38,6 @@ class FinanceRepositoryImpl @Inject constructor(
         }
     }
 
-    override suspend fun updateExpense(expense: Expense): Result<Unit> {
-        return try {
-            localDao.updateExpense(expense)
-            Result.success(Unit)
-        } catch (e: Exception) {
-            Result.failure(e)
-        }
-    }
-
     override suspend fun deleteExpense(expense: Expense): Result<Unit> {
         return try {
             localDao.deleteExpense(expense)

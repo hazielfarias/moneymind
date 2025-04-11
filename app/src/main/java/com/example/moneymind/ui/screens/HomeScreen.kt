@@ -197,7 +197,7 @@ fun HomeScreen(
 
                     Column {
                         Text(
-                            text = "Transações Recentes",
+                            text = "Depesas Recentes",
                             style = MaterialTheme.typography.titleMedium.copy(
                                 fontWeight = FontWeight.Bold
                             ),
@@ -208,7 +208,7 @@ fun HomeScreen(
                             Box(
                                 modifier = Modifier
                                     .fillMaxWidth()
-                                    .height(200.dp)
+                                    .height(400.dp)
                                     .background(
                                         color = MaterialTheme.colorScheme.surfaceVariant,
                                         shape = RoundedCornerShape(12.dp)
@@ -224,7 +224,7 @@ fun HomeScreen(
                             LazyColumn(
                                 modifier = Modifier
                                     .fillMaxWidth()
-                                    .height(200.dp)
+                                    .height(400.dp)
                                     .background(
                                         color = MaterialTheme.colorScheme.surfaceVariant,
                                         shape = RoundedCornerShape(12.dp)
